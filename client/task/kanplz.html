@@ -1,0 +1,66 @@
+<template name="task_kanplz">
+	<h1>Kanadische Postleitzahlen <small>staring Santa Clause</small></h1>
+	<div class="row">
+		<div class="col-sm-8">
+			<p>
+				<b>Aufgabe:</b> Da wir auch Pakete an Santa Claus liefern wollen müssen wir auch Adressen in Kanada akzeptieren.
+				Die Kanadische Postleitzahl definiert sich wie folgt:<br>
+				A0A 0A0<br>
+				A = Buchstabe<br>
+				0 = Zahl
+			</p>
+			<p>
+				Schreibe einen Regulären Ausdruck, der nur auf Kanadische Postleitzahlen zutrifft.<br>
+				Die Postleitzahl vom Nordpol: "H0H 0H0"
+			</p>
+		</div>
+		<div class="col-sm-4">
+			<div class="well well-sm">
+				<table>
+					<tr><td><code><b>[char]</b></code></td>			<td>Character Class</td></tr>
+					<tr><td><code><b>\d</b></code></td>				<td>Shortcut für [0-9]</td></tr>
+					<tr><td><code><b>*</b></code></td>				<td>Equivalent zu {0,}</td></tr>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-8">
+			<div class="well well-sm io">
+				{{#if inputError}}
+					<p class="text-danger">
+						{{inputError}}
+					</p>
+				{{/if}}
+				<table>
+					<tbody>
+						{{#each results}}
+							<tr class="{{#if equals}}text-success{{else}}text-danger{{/if}}">
+								<td><code>{{origin}}</code>&nbsp;</td>
+								<td>
+									{{#unless initial}}
+										{{#if equals}}
+											✓ {{#if shouldFail}}kein Treffer{{else}}Treffer{{/if}}
+										{{else}}
+											&times; bekam <code>{{result}}</code>
+											{{#if shouldFail}}keinen Treffer{{else}}erwarte <code>{{compare}}</code>{{/if}}
+										{{/if}}
+									{{/unless}}
+								</td>
+							</tr>
+						{{/each}}
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="col-md-4">
+			{{#autoForm schema=form doc=task role="form"}}
+				{{afQuickField 'input' template='form_vertical_field'}}
+				<div class="btn-group btn-group-justified form-group">
+					<div class="btn-group"><button type="submit" class="btn btn-primary">Ausführen</button></div>
+					<div class="btn-group"><button type="reset" class="btn btn-default">Reset</button></div>
+				</div>
+			{{/autoForm}}
+		</div>
+	</div>
+</template>

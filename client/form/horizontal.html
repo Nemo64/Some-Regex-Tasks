@@ -1,0 +1,11 @@
+<template name="form_horizontal_field">
+	<div class="form-group{{#if afFieldIsInvalid name autoform=autoform}} has-error{{/if}}">
+		{{afFieldLabel name autoform=autoform class="col-sm-4 control-label"}}
+		<div class="col-sm-8">
+			{{{inputHtml}}}
+	        {{#if afFieldIsInvalid name autoform=autoform}}
+	        	<span class="help-block">{{{afFieldMessage name autoform=autoform}}}</span>
+	        {{/if}}
+		</div>
+	</div>
+</template>

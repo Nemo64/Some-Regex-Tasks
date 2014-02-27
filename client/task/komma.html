@@ -1,0 +1,64 @@
+<template name="task_komma">
+	<h1>Komma separierte Liste <small>trennen von Benutzer eingaben</small></h1>
+	<div class="row">
+		<div class="col-sm-8">
+			<p>
+				<b>Aufgabe:</b> Stell dir vor die <span class="hidden-md hidden-lg">folgende</span> Liste
+				<span class="hidden-sm hidden-xs">links</span> ist eine Benutzer eingabe.
+			</p>
+			<p>
+				Baue nun eine Reguläre Expression welche man zum trennen der Liste benuten könnte.
+				Dabei sollten die Leerzeichen nicht im ergebnis sein.
+			</p>
+		</div>
+		<div class="col-sm-4">
+			<div class="well well-sm">
+				<table>
+					<tr><td><code><b>[char]</b></code></td>			<td>Character Class</td></tr>
+					<tr><td><code>[char]<b>{1,2}</b></code></td>	<td>Repedition</td></tr>
+					<tr><td><code><b>\s</b></code></td>				<td>Shortcut für leerzeichen oä.</td></tr>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4">
+			<pre class="io pre-scrollable">{{list}}</pre>
+		</div>
+		<div class="col-md-4 col-sm-6">
+			{{#autoForm schema=form doc=task role="form"}}
+				{{afQuickField 'input' template='form_vertical_field'}}
+				<div class="btn-group btn-group-justified form-group">
+					<div class="btn-group"><button type="submit" class="btn btn-primary">Ausführen</button></div>
+					<div class="btn-group"><button type="reset" class="btn btn-default">Reset</button></div>
+				</div>
+			{{/autoForm}}
+		</div>
+		<div class="col-md-4 col-sm-6">
+			<div class="well well-sm io">
+				{{#if inputError}}
+					<p class="text-danger">
+						{{inputError}}
+					</p>
+				{{else}}
+					<table>
+						<tbody>
+							{{#each results}}
+								<tr class="{{#if equals}}text-success{{else}}text-danger{{/if}}">
+									<td>"{{result}}"&nbsp;</td>
+									<td>
+										{{#if equals}}
+											treffer
+										{{else}}
+											erwarte {{compare}}
+										{{/if}}
+									</td>
+								</tr>
+							{{/each}}
+						</tbody>
+					</table>
+				{{/if}}
+			</div>
+		</div>
+	</div>
+</template>

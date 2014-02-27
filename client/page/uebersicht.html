@@ -1,0 +1,32 @@
+<template name="page_uebersicht">
+	<div class="table-responsive">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Kanadische PLZ</th>
+					<th>Referenz Nummer</th>
+					<th>Komma Liste</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				{{#each persons}}
+					<tr>
+						<td>
+							<a href="/tasks/{{_id}}">{{#if name}}{{name}}{{else}}anonym{{/if}}
+						</td>
+						{{#each tasks _id}}
+							<td class="{{#if success}}text-success{{else}}text-danger{{/if}}">
+								{{#if success}}✓{{else}}&times;{{/if}} <code>{{input}}</code>
+							</td>
+						{{/each}}
+						<td>
+							<a href="#" data-kill="{{_id}}">&times;</a>
+						</td>
+					</tr>
+				{{/each}}
+			</tbody>
+		</table>
+	</div>
+</template>

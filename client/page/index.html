@@ -1,0 +1,19 @@
+<template name="page_index">
+	<div class="container">
+		
+		<h1>Aufgaben zum Thema RegExp <small>Carsten, Henning, Henrik, Marco</small></h1>
+		
+		<div class="row">
+			<div class="col-sm-4 col-md-3">
+				<p>Wenn du willst das deine Aufgaben später besprochen werden kannst du optional einen Namen hinterlegen.</p>
+			</div>
+	
+			<div class="col-sm-6 col-md-4">
+				{{#autoForm schema=loginForm validation="blur" role="form" id="startForm"}}
+					{{afQuickField 'name' template='form_vertical_field'}}
+					<button type="submit" class="btn btn-primary">Start Aufgaben</button>
+				{{/autoForm}}
+			</div>
+		</div>
+	</div>
+</template>

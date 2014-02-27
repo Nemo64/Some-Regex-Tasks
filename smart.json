@@ -1,0 +1,10 @@
+{
+  "packages": {
+    "simple-schema": {},
+    "collection2": {},
+    "autoform": {},
+    "iron-router": {},
+    "bootstrap3-less": {},
+    "collection-helpers": {}
+  }
+}
